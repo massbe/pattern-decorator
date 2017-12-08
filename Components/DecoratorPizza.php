@@ -3,13 +3,12 @@ namespace Components;
 
 class DecoratorPizza
 {
-    public $ingri;
-    public $price = 10;
-    public $yourPizzaWithDop;
+    public $ingridients;
+    public $yourPizzaWithToppings;
 
     public function __construct(Pizza $pizza)
     {
-        $this->yourPizzaWithDop = $pizza;
+        $this->yourPizzaWithToppings = $pizza;
     }
 
     public function addIngri(array $arrayIngri = null)
@@ -17,20 +16,21 @@ class DecoratorPizza
         if($arrayIngri){
             foreach ($arrayIngri as $productItem) {
                 $ingriInfoFromFactoryProduct = new FactoryProduct();
+
                 try {
                     $ingriInfo = $ingriInfoFromFactoryProduct->getProductInfo($productItem);
-                    $this->ingri[] = $ingriInfo->addProduct();
-                    $this->price += $ingriInfo->getPrice();
+                    $this->ingridients[] = $ingriInfo->getNameProduct();
+                    $this->yourPizzaWithToppings->price += $ingriInfo->getPrice();
                 } catch (\Exception $e) {
                     echo $e->getMessage();
                 }
             }
-            $this->yourPizzaWithDop->yourPizza = 'Ваша пицца стоит '.$this->price." грн. Она состоит из ".implode(', ', $this->ingri);
+            $this->yourPizzaWithToppings->yourPizza = 'Ваша пицца стоит '.$this->yourPizzaWithToppings->price." грн. Она состоит из ".implode(', ', $this->ingridients);
         }
     }
 
     public function createPizza()
     {
-        echo $this->yourPizzaWithDop->yourPizza;
+        echo $this->yourPizzaWithToppings->yourPizza;
     }
 }

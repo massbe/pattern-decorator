@@ -4,16 +4,18 @@
 namespace Components;
 
 
-class Сheese extends ProductInterface
+class Сheese extends ProductAbstract
 {
-    public $price = 10;
+    private $price = 10;
+    private $nameProduct = 'Сырочек';
 
     public function getPrice()
     {
         return $this->price;
     }
 
-    public function addProduct(){
-        return "Сыр";
+    public function getNameProduct()
+    {
+        return $this->nameProduct;
     }
 }

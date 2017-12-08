@@ -4,16 +4,18 @@
 namespace Components;
 
 
-class Tomato extends ProductInterface
+class Tomato extends ProductAbstract
 {
-    public $price = 5;
+    private $price = 5;
+    private $nameProduct = 'Томатики';
 
     public function getPrice()
     {
         return $this->price;
     }
 
-    public function addProduct(){
-        return "Томаты";
+    public function getNameProduct()
+    {
+        return $this->nameProduct;
     }
 }

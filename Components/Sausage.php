@@ -4,16 +4,18 @@
 namespace Components;
 
 
-class Sausage extends ProductInterface
+class Sausage extends ProductAbstract
 {
-    public $price = 20;
+    private $price = 20;
+    private $nameProduct = 'Колбасочка';
 
     public function getPrice()
     {
         return $this->price;
     }
 
-    public function addProduct(){
-        return "Колбасочка";
+    public function getNameProduct()
+    {
+        return $this->nameProduct;
     }
 }
