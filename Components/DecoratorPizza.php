@@ -1,8 +1,5 @@
 <?php
-
-
 namespace Components;
-
 
 class DecoratorPizza
 {
@@ -15,29 +12,25 @@ class DecoratorPizza
         $this->yourPizzaWithDop = $pizza;
     }
 
-    public function addIngri(array $arrayIngri)
+    public function addIngri(array $arrayIngri = null)
     {
-        try {
+        if($arrayIngri){
             foreach ($arrayIngri as $productItem) {
                 $ingriInfoFromFactoryProduct = new FactoryProduct();
-                $ingriInfo = $ingriInfoFromFactoryProduct->getProductInfo($productItem);
-                $this->ingri[] = $ingriInfo->addProduct();
-                $this->price += $ingriInfo->getPrice();
+                try {
+                    $ingriInfo = $ingriInfoFromFactoryProduct->getProductInfo($productItem);
+                    $this->ingri[] = $ingriInfo->addProduct();
+                    $this->price += $ingriInfo->getPrice();
+                } catch (\Exception $e) {
+                    echo $e->getMessage();
+                }
             }
-        } catch (\Exception $e) {
-            $e->getMessage();
+            $this->yourPizzaWithDop->yourPizza = 'Ваша пицца стоит '.$this->price." грн. Она состоит из ".implode(', ', $this->ingri);
         }
-
-        $this->createPizzaWithDop();
     }
 
-    public function createPizzaWithDop()
+    public function createPizza()
     {
-        $this->yourPizzaWithDop->yourPizza = 'Ваша пицца стоит '.$this->price." грн. Она состоит из ".implode(', ', $this->ingri);
-    }
-
-    public function __call($method, $args = '')
-    {
-        return $this->yourPizzaWithDop->$method($args);
+        echo $this->yourPizzaWithDop->yourPizza;
     }
 }

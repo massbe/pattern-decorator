@@ -8,9 +8,10 @@ class FactoryProduct
 {
     public function getProductInfo($item)
     {
+
         $className = 'Components\\'.$item;
         if(!class_exists($className)){
-            throw new \Exception('На кухне нет ингридиента'.$item.'<br>');
+            throw new \Exception('Нет компонента '.$item."<br>");
         }
         return $oneOfProduct = new $className();
     }
