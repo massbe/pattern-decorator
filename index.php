@@ -2,10 +2,10 @@
 include_once ('vendor/autoload.php');
 
 use Components\Pizza;
-use Components\DecoratorPizza;
+use Components\DecoratorSausage;
+use Components\DecoratorCheese;
+use Components\DecoratorTomato;
 
-$ingridientsFromForm = ['Sausage', 'Tomato', 'Tomato', 'Sausage', 'Сheese'];
-
-$pizza = new DecoratorPizza(new Pizza());
-$pizza->addIngri($ingridientsFromForm);
+$pizza = new DecoratorTomato(new DecoratorCheese(new Pizza()));
 $pizza->createPizza();
+//print_r ($pizza->createPizza());

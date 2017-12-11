@@ -4,17 +4,18 @@
 namespace Components;
 
 
-class Pizza
+class Pizza implements PizzaInterface
 {
     public $price = 10;
-    public $yourPizza;
+    public $pizza;
 
     public function __construct()
     {
-        $this->yourPizza = 'Вы выбрали стандартную пицу без допингов. Цена её '.$this->price.' грн.';
+        $this->pizza = 'Вы заказали пиццу из: ';
     }
 
-    public function createPizza() {
-        echo $this->yourPizza;
+    public function createPizza()
+    {
+        echo $this->pizza = "Вы выбрали стандартную пицу. Её стоимость - 10 грн.";
     }
 }
