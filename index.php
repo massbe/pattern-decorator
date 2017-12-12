@@ -6,6 +6,5 @@ use Components\DecoratorSausage;
 use Components\DecoratorCheese;
 use Components\DecoratorTomato;
 
-$pizza = new DecoratorTomato(new DecoratorCheese(new Pizza()));
-$pizza->createPizza();
-//print_r ($pizza->createPizza());
+$pizza = new DecoratorSausage(new DecoratorCheese(new DecoratorCheese(new Pizza())));
+echo $pizza->createPizza();

@@ -7,15 +7,15 @@ namespace Components;
 class Pizza implements PizzaInterface
 {
     public $price = 10;
-    public $pizza;
+    private $pizza;
 
     public function __construct()
     {
-        $this->pizza = 'Вы заказали пиццу из: ';
+        $this->pizza = 'Вы заказали пиццу';
     }
 
     public function createPizza()
     {
-        echo $this->pizza = "Вы выбрали стандартную пицу. Её стоимость - 10 грн.";
+        return $this->pizza;
     }
 }

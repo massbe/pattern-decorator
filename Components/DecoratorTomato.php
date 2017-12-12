@@ -4,16 +4,10 @@
 namespace Components;
 
 
-class DecoratorTomato implements PizzaInterface
+class DecoratorTomato extends DecoratorProduct
 {
-    public $price = 5;
-    public $nameProduct = 'Томатики';
-    public $pizzaWithToppings;
-
-    public function __construct(PizzaInterface $pizza)
-    {
-        $this->pizzaWithToppings = $pizza;
-    }
+    private $price = 5;
+    private $nameProduct = 'Томатики';
 
     public function getPrice()
     {
@@ -23,11 +17,5 @@ class DecoratorTomato implements PizzaInterface
     public function getNameProduct()
     {
         return $this->nameProduct;
-    }
-
-    public function createPizza()
-    {
-        $this->pizzaWithToppings->pizza .= "<br>".$this->nameProduct." - ".$this->price." грн<br>";
-        var_dump($this->pizzaWithToppings);
     }
 }
